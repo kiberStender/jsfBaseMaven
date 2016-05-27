@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    provided
+}
+ 
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+        test.compileClasspath += configurations.provided
+        test.runtimeClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    
+    //Javax sevlet
+    provided 'javax.servlet:javax.servlet-api:3.1.0'
+    
+    //jsf
+    compile 'com.sun.faces:jsf-api:2.2.9'
+    compile 'com.sun.faces:jsf-impl:2.2.9'
+    compile 'jstl:jstl:1.2'
+}
